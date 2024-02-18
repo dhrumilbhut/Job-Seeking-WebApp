@@ -40,20 +40,18 @@ export const login = catchAsyncErrors(async (req, res, next) => {
       new ErrorHandler(`User with provided email and ${role} not found!`, 404)
     );
   }
+  req.session.userId = user._id;
   sendToken(user, 201, res, "User Logged In!");
 });
 
 export const logout = catchAsyncErrors(async (req, res, next) => {
-  res
-    .status(201)
-    .cookie("token", "", {
-      httpOnly: true,
-      expires: new Date(Date.now()),
-    })
-    .json({
-      success: true,
-      message: "Logged Out Successfully.",
-    });
+  req.session.destroy(error => {
+    if (error) {
+      res.status(500).send('Error logging out');
+    } else {
+      res.send('Logout successful');
+    }
+  });
 });
 
 

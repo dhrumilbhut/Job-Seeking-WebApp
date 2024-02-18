@@ -8,6 +8,7 @@ import cors from "cors";
 import { errorMiddleware } from "./middlewares/error.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
+import session from "express-session";
 
 const app = express();
 config({ path: "./config/config.env" });
@@ -19,6 +20,12 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(session({
+  secret: 'your-secret-key123123',
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use(cookieParser());
 app.use(express.json());
