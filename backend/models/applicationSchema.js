@@ -54,6 +54,10 @@ const applicationSchema = new mongoose.Schema({
       enum: ["Employer"],
       required: true,
     },
+    jobTitle: {
+      type: String,
+      required: true,
+    }
   },
 });
 

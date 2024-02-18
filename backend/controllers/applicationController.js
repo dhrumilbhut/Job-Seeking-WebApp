@@ -53,6 +53,7 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   const employerID = {
     user: jobDetails.postedBy,
     role: "Employer",
+    jobTitle: jobDetails.title,
   };
   if (
     !name ||

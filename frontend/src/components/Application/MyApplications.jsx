@@ -143,6 +143,9 @@ const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
           <p>
             <span>Address:</span> {element.address}
           </p>
+          <p>
+            <span>Applied To:</span> {element.employerID.jobTitle}
+          </p>
         </div>
         <div className="view_btn">
         <button onClick={openPDF}>View Resume</button>
@@ -176,6 +179,9 @@ const EmployerCard = ({ element, openModal }) => {
           </p>
           <p>
             <span>Address:</span> {element.address}
+          </p>
+          <p>
+            <span>Applied To:</span> {element.employerID.jobTitle}
           </p>
         </div>
         <div className="view_btn">
